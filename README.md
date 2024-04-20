@@ -14,7 +14,7 @@ python manage.py createsuperuser
 ## Database
 open models.py and create your function eg
 
-
+```
 from django.db import models  # Importing the models module from Django
 from django.utils import timezone  # Importing the timezone module from Django
 from django.contrib.auth.models import User  # Importing the User model from Django's authentication system
@@ -27,6 +27,7 @@ class Post(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)  # Date and time when the post was created
     author = models.ForeignKey(User, on_delete=models.CASCADE)  # ForeignKey relationship with the User model, each post belongs to a user
     # on_delete=models.CASCADE ensures that if the associated user is deleted, all related posts are also deleted
+```
 
 - make migrations
   ```python manage.py makemigrations```
@@ -41,31 +42,50 @@ eg
 ### commmands to run in terminal
 - running python shell on cmd
    ```python manage.py shell```
+
    - this creates an interactive console. Run the following commands
+   - Importing the Post model from the blog app's models module 
     ```from blog.models import Post```
+
+    - Importing the User model from Django's authentication system
     ```from django.contrib.auth.models import User```
-    ```User.objects.all() ```
+
+    - Querying all users from the User model
+    ```User.objects.all()```
+
+    - Querying the first user from the User model 
     ```User.objects.first()```
+
+    - Filtering users by username and retrieving the first result
     ```user = User.objects.filter(username='ashley').first()```
-    <!-- check attributes -->
-    eg ```user.id```
-    <!-- creating posts -->
+
+    - Check attributes of the user objec
+        For example: ```user.id```
+
+    - Creating a new post associated with a user
     ```post_1 = Post(title='Blog 1', content='First Content', author=user)```
-    <!-- querying -->
+
+    - Querying all posts from the Post model
     ```Post.objects.all()```
-    <!-- saving to db -->
+
+    - Saving the newly created post to the database
     ```post_1.save()```
-    <!--  -->
+
+    - Querying the first post from the Post model
     ```post = Post.objects.first()```
-    <!-- getting all posts by a certain user -->
-    .modelname_set
-    eg ```user.post_set```
+
+    - Getting all posts associated with a certain user
+    ```.modelname_set``` is the default naming convention for related objects
+    - For example: ```user.post_set```
     ```user.post_set.all()```
-    <!-- creating a post without need to save -->
+
+    - Creating a post associated with a user without explicitly saving it
     ```user.post_set.create(title='Blog 4', content='Four')```
+
 
 ### back to project
 in the views.py have something like this
+
 ```
 from django.shortcuts import render  # Importing the render function from Django shortcuts
 from .models import Post  # Importing the Post model from the current directory's models module
@@ -85,11 +105,11 @@ def about(request):
     # Render the about.html template with the title 'About page'
     return render(request, 'blog/about.html', {'title': 'About page'})
 ```
-<!-- register your model in the admin.py file -->
+- register your model in the admin.py file
 ```
     from django.contrib import admin
-from .models import Post
+    from .models import Post
 
+    <!-- Register your models here. -->
+    admin.site.register(Post)
 ```
-<!-- Register your models here. -->
-admin.site.register(Post)
