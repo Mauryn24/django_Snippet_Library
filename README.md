@@ -1,9 +1,11 @@
 # Django Tutorial
 
 ## Admin Page
-python manage.py createsuperuser
+- ```Python manage.py createsuperuser```
+  The command "python manage.py createsuperuser" is used in Django to create a superuser account, which typically has access to the Django admin interface and has administrative privileges within the Django project.
+  When you run this command, Django will prompt you to provide details for the superuser account, such as username, email address, and password. Once you provide this information, Django will create the superuser account and you can use it to access the Django admin interface and perform administrative tasks within your Django project.
 
-- Must have created db migrations
+- Must have created db migrations to run the coomand 
 - code
   ```python manage.py makemigrations```
   then run
