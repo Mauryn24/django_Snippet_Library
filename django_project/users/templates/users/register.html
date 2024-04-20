@@ -1,5 +1,5 @@
 {% extends 'blog/base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
     <!-- Content section for registration form -->
     <div class="content-section">
@@ -8,7 +8,7 @@
             {% csrf_token %} <!-- CSRF token for security -->
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Join Today</legend>
-                {{ form.as_p }} <!-- Displaying form fields as paragraphs -->
+                {{ form|crispy }} <!-- Displaying form fields  -->
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Sign Up</button> <!-- Submit button for form -->
