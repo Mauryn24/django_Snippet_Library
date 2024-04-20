@@ -1,15 +1,20 @@
 {% extends "blog/base.html" %}
 {% block content %}
     {% for post in posts %}
+        <!-- Looping through each post -->
         <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ post.author }}</a>
-              <small class="text-muted">{{ post.date_posted }}</small>
+            <div class="media-body">
+                <div class="article-metadata">
+                    <!-- Displaying the author of the post -->
+                    <a class="mr-2" href="#">{{ post.author }}</a>
+                    <!-- Displaying the date when the post was posted, formatted as "Month Day, Year" -->
+                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                </div>
+                <!-- Displaying the title of the post -->
+                <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                <!-- Displaying the content of the post -->
+                <p class="article-content">{{ post.content }}</p>
             </div>
-            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
-          </div>
         </article>
     {% endfor %}
 {% endblock content %}
