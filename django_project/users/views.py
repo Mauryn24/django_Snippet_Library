@@ -16,9 +16,9 @@ def register(request):
             # Get the username from the form data
             username = form.cleaned_data.get('username')
             # Display a success message to the user
-            messages.success(request, f'Account created for {username}!')
+            messages.success(request, f'Your account has been created! You are now able to login')
             # Redirect the user to the blog home page
-            return redirect('blog-home')
+            return redirect('login')
     else:
         # If it's not a POST request, create a new instance of UserRegisterForm
         form = UserRegistrationForm()

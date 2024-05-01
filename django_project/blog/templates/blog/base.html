@@ -44,10 +44,14 @@
                     </div>
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">
+                        {% if user.is_authenticated %}
+                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
                         <!-- Login link -->
-                        <a class="nav-item nav-link" href="#">Login</a>
+                        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                         <!-- Register link -->
-                        <a class="nav-item nav-link" href="#">Register</a>
+                        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
