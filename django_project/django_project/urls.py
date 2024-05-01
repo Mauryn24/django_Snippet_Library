@@ -16,13 +16,18 @@ Including another URLconf
 """
 
 from django.contrib import admin  # Importing the admin module from Django
+from django.contrib.auth import views as auth_views
 from django.urls import path, include  # Importing the path and include functions from Django URLs
 from users import views as user_views  # Importing views module from the users app with alias user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # URL for the admin site
     path('register/', user_views.register, name='register'),  # URL for user registration view
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    # URL for user registration view
     # path('blog/', include('blog.urls')),  # URL for blog app (commented out)
     # To let the blog home be the home of our app, use:
     path('', include('blog.urls')),  # URL for blog home
+
 ]
