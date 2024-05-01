@@ -7,17 +7,17 @@
         <form method="POST">
             {% csrf_token %} <!-- CSRF token for security -->
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today</legend>
-                {{ form|crispy:"bootstrap4" }} <!-- Displaying form fields  -->
+                <legend class="border-bottom mb-4">Log In</legend>
+                {{ form|crispy }} <!-- Displaying form fields  -->
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Sign Up</button> <!-- Submit button for form -->
+                <button class="btn btn-outline-info" type="submit">Login</button> <!-- Submit button for form -->
             </div>
         </form>
-        <!-- Link for users who already have an account -->
+        <!-- Link for users who do not have an account -->
         <div class="border-top pt-3">
             <small class="text-muted">
-                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+                Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
             </small>
         </div>
     </div>
