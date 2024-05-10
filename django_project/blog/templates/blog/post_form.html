@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <!-- Content section for registration form -->
+    <div class="content-section">
+        <!-- Registration form -->
+        <form method="POST">
+            {% csrf_token %} <!-- CSRF token for security -->
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Blog Post</legend>
+                {{ form|crispy:"bootstrap4" }} <!-- Displaying form fields  -->
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Post</button> <!-- Submit button for form -->
+            </div>
+        </form>
+    </div>
+{% endblock content %}

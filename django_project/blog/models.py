@@ -1,6 +1,7 @@
 from django.db import models  # Importing the models module from Django
 from django.utils import timezone  # Importing the timezone module from Django
 from django.contrib.auth.models import User  # Importing the User model from Django's authentication system
+from django.urls import reverse
 
 # Create your models here.
 class Post(models.Model):
@@ -13,3 +14,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+        # use reverse function instead of redirect function -- why??
+        #  REDIRECT - REDIRECTS ONE TO A SPECIFIC ROUTE
+        #  REVERSE - returns the full url to that route as a string
+
+    def get_absolute_url(self):
+        return reverse('post_detail', kwargs={'pk': self.pk})

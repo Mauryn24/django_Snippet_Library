@@ -3,6 +3,7 @@
     {% for post in posts %}
         <!-- Looping through each post -->
         <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" alt="image">
             <div class="media-body">
                 <div class="article-metadata">
                     <!-- Displaying the author of the post -->
@@ -11,7 +12,7 @@
                     <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
                 </div>
                 <!-- Displaying the title of the post -->
-                <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                <h2><a class="article-title" href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
                 <!-- Displaying the content of the post -->
                 <p class="article-content">{{ post.content }}</p>
             </div>

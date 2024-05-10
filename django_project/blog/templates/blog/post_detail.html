@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<!-- Looping through each post -->
+<article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}" alt="image">
+    <div class="media-body">
+        <div class="article-metadata">
+            <!-- Displaying the author of the post -->
+            <a class="mr-2" href="#">{{ object.author }}</a>
+            <!-- Displaying the date when the post was posted, formatted as "Month Day, Year" -->
+            <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+            {% if object.author == user %}
+                <div>
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post_update' object.id %}">Update</a>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post_delete' object.id %}">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+        <!-- Displaying the title of the post -->
+        <h2 class="article-title">{{ object.title }}</h2>
+        <!-- Displaying the content of the post -->
+        <p class="article-content">{{ object.content }}</p>
+    </div>
+</article>
+<!-- dealing with detail views it expects the context of template to be called object -->
+
+{% endblock content %}
