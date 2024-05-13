@@ -5,11 +5,13 @@ from .views import (
     PostDetailView,
     PostCreateView,
     PostUpdateView,
-    PostDeleteView
+    PostDeleteView,
+    UserPostListView
 )
 
 urlpatterns = [
     path('', PostListView.as_view(), name="blog-home"),
+    path('user/<username>', UserPostListView.as_view(), name="user-posts"),
     # primary key of the specific post
     path('post/<int:pk>/', PostDetailView.as_view(), name="post_detail"),
     path('post/new/', PostCreateView.as_view(), name="post_create"),
