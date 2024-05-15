@@ -33,3 +33,7 @@ True
 ```
 
 ``` http://127.0.0.1:8000/?page=5 ``` access 5th page after pagination
+
+## Users
+- Login and logout - ensures that users can login or logout
+- Profile picture - the users can log their profiles and change their profiles
