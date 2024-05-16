@@ -37,3 +37,6 @@ True
 ## Users
 - Login and logout - ensures that users can login or logout
 - Profile picture - the users can log their profiles and change their profiles
+
+## Blog
+- Make sure the a specific users blogs can be filtered
